@@ -163,6 +163,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("otpmenu") },
+	{ MODKEY,                       XK_F2,      spawn,          SHCMD("screenkey -s small --scr 1 -p fixed -g 200x50+1+21 --opacity .8 --font-color white") },
+	{ MODKEY,                       XK_F3,      spawn,          SHCMD("killall screenkey") },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("reboot") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("shutdown -h now") },
 	/* { MODKEY|ShiftMask,			    XK_t,      spawn,		   SHCMD("kitty -e ytop") }, */
     /* { MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[3]} }, // spiral */
 	/* { MODKEY,                       XK_0,      view,           {.ui = ~0 } }, */
