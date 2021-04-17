@@ -56,6 +56,7 @@ static const int statmonval = 0;
 
 /* tagging */
 static const char *tags[] = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " };
+/* static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", " 6 ", " 7 ", " 8 ", " 9 " }; */
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -163,6 +164,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu -l 10 -y 400 -x 720 -z 500") },
 	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("otpmenu -l 10 -y 400 -x 720 -z 500") },
+	{ MODKEY,                       XK_F1,      spawn,          SHCMD("msi-rgb-switch") },
 	{ MODKEY,                       XK_F2,      spawn,          SHCMD("screenkey -s small --scr 1 -p fixed -g 200x50+1+21 --opacity .8 --font-color white") },
 	{ MODKEY,                       XK_F3,      spawn,          SHCMD("killall screenkey") },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("reboot") },
