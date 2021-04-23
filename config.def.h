@@ -128,7 +128,7 @@ static Key keys[] = {
 	{ MODKEY,			            XK_r,      spawn,		   SHCMD("$TERMINAL -e ranger") },
 	{ MODKEY,			            XK_y,      spawn,		   SHCMD("flameshot gui -p ~/Pictures/screenshots") },
 	{ MODKEY|ShiftMask,			    XK_y,      spawn,		   SHCMD("flameshot full -p ~/Pictures/screenshots") },
-	{ MODKEY,			            XK_e,      spawn,		   SHCMD("betterlockscreen -l") },
+	{ MODKEY,			            XK_e,      spawn,		   SHCMD("betterlockscreen -l dimblur") },
 	{ MODKEY|ShiftMask,			    XK_v,      spawn,		   SHCMD("mpv /dev/video0") },
 	{ MODKEY,                       XK_semicolon,      spawn,  SHCMD("skippy-xd") },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
