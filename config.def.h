@@ -173,6 +173,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F3,      spawn,          SHCMD("killall screenkey") },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("reboot") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("shutdown -h now") },
+	{ MODKEY|ShiftMask|ControlMask, XK_y,      spawn,          SHCMD("ytfzf -D") },
 	/* { MODKEY|ShiftMask,			    XK_t,      spawn,		   SHCMD("kitty -e ytop") }, */
     /* { MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[3]} }, // spiral */
 	/* { MODKEY,                       XK_0,      view,           {.ui = ~0 } }, */
