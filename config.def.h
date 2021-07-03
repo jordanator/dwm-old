@@ -65,7 +65,7 @@ static const Rule rules[] = {
 	/* class        instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",       NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Sxiv",       NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Mpv",       NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Mpv",        NULL,     NULL,           0,         0,          0,           0,        -1 },
 	{ "Firefox",    NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "St",         NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Alacritty",  NULL,     NULL,           0,         0,          1,           0,        -1 },
@@ -146,6 +146,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} }, // float
 	/* { MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[3]} }, // float */
 	{ MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[4]} }, // monocle
     { MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[5]} }, // dwindle
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
@@ -171,8 +172,9 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_F2,      spawn,  SHCMD("screenkey -s small --scr 1 -p fixed -g 600x100+2573+1330 --opacity .9 --font-color white") }, */
 	/* { MODKEY,                       XK_F3,      spawn,  SHCMD("killall screenkey") }, */
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu -l 10 -y 400 -x 720 -z 500") },
-	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("otpmenu -l 10 -y 400 -x 720 -z 500") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu -c -l 10") },
+	/* { MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("otpmenu -l 10 -y 400 -x 720 -z 500") }, */
+	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("otpmenu -c -l 10") },
 	{ MODKEY|ShiftMask|ControlMask, XK_p,      spawn,          SHCMD("powermenu") },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("killprog") },
 	{ MODKEY,                       XK_F1,      spawn,          SHCMD("msi-rgb-switch") },
