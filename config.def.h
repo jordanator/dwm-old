@@ -20,19 +20,20 @@ static const char *fonts[]          = { "Hack Nerd Font:size=13", "JoyPixels:pix
 static const char *upvol[]          = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",     NULL };
 static const char *downvol[]        = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",     NULL };
 static const char *mutevol[]        = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle",  NULL };
-static const char col_gray1[]       = "#232731";
+static const char col_gray1[]       = "#282828";
 static const char col_gray2[]       = "#333333";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const char col_gray4[]       = "#fefefe";
 static const char col_cyan[]        = "#005577";
 static const char col_purple[]      = "#5a5aa4";
 static const char col_red[]         = "#d54646";
 static const char col_green[]       = "#23d18b";
 static const char col_yellow[]      = "#d7ba7d";
 static const char col_blue[]        = "#81a1c1";
+static const char col_info_blue[]   = "#4fc1ff";
 static const char col_magenta[]     = "#c586c0";
 static const char col_white[]       = "#abb2bf";
-static const char col_bg_alt[]      = "#292d38";
+static const char col_bg_alt[]      = "#212121";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -40,8 +41,8 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_blue,  col_blue  },
 	[SchemeStatus]  = { col_gray4, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
 
-	[SchemeTagsSel]  = { col_gray2, col_blue,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-    [SchemeTagsNorm]  = { col_gray4, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_info_blue, col_gray1,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    [SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
 
     [SchemeInfoSel]  = { col_gray3, col_bg_alt,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
     [SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
@@ -117,6 +118,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,			            XK_b,      spawn,		   SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &") },
+	{ MODKEY|ControlMask|ShiftMask, XK_b,      spawn,		   SHCMD("feh --bg-max --randomize ~/Downloads/bec/* &") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
@@ -135,7 +137,7 @@ static Key keys[] = {
 	{ MODKEY,			            XK_s,      spawn,		   SHCMD("flameshot gui -p ~/Pictures/screenshots") },
 	{ MODKEY|ShiftMask,			    XK_s,      spawn,		   SHCMD("flameshot full -p ~/Pictures/screenshots") },
 	{ MODKEY,			            XK_e,      spawn,		   SHCMD("betterlockscreen -l dimblur") },
-	{ MODKEY|ShiftMask,			    XK_v,      spawn,		   SHCMD("mpv /dev/video0") },
+	{ MODKEY|ShiftMask,			    XK_v,      spawn,		   SHCMD("mpv --profile=low-latency /dev/video0") },
 	{ MODKEY,                       XK_semicolon,      spawn,  SHCMD("skippy-xd") },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
