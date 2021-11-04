@@ -13,12 +13,12 @@ static const int systraypinningfailfirst =
     1; /* 1: if pinning fails, display systray on the first monitor, False:
           display systray on the last monitor*/
 static const int showsystray = 1;      /* 0 means no systray */
-static const unsigned int gappih = 23; /* horiz inner gap between windows */
-static const unsigned int gappiv = 23; /* vert inner gap between windows */
+static const unsigned int gappih = 18; /* horiz inner gap between windows */
+static const unsigned int gappiv = 18; /* vert inner gap between windows */
 static const unsigned int gappoh =
-    23; /* horiz outer gap between windows and screen edge */
+    18; /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov =
-    23; /* vert outer gap between windows and screen edge */
+    18; /* vert outer gap between windows and screen edge */
 static int smartgaps =
     0; /* 1 means no outer gap when there is only one window */
 static const int showbar = 1; /* 0 means no bar */
@@ -32,7 +32,7 @@ static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume",
                                 "@DEFAULT_SINK@", "-5%", NULL};
 static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute",
                                 "@DEFAULT_SINK@", "toggle", NULL};
-static const char col_gray1[] = "#282828";
+static const char col_gray1[] = "#1e1e1e";
 static const char col_gray2[] = "#333333";
 static const char col_gray3[] = "#bbbbbb";
 static const char col_gray4[] = "#fefefe";
@@ -64,11 +64,11 @@ static const char *colors[][3] = {
                      // cannot be empty}
 
     [SchemeInfoSel] =
-        {col_gray3, col_bg_alt,
+        {col_yellow, col_gray1,
          "#000000"}, // infobar middle  selected {text,background,not used but
                      // cannot be empty}
     [SchemeInfoNorm] =
-        {col_gray3, col_gray1,
+        {col_yellow, col_gray1,
          "#000000"}, // infobar middle  unselected {text,background,not used but
                      // cannot be empty}
 };
@@ -86,6 +86,9 @@ static const int statmonval = 0;
 static const char *tags[] = {" 1 ", " 2 ", " 3 ", " 4 ", " 5 ",
                              " 6 ", " 7 ", " 8 ", " 9 "};
 /* static const char *tags[] = { "  ", "  ", "  ", "  ", "  ", " 6 ", " 7 ", " 8 ",
+ * ", " 8 ",
+ * ", " 8 ",
+ * ", " 8 ",
  * ", " 8 ", " 9 " }; */
 
 static const Rule rules[] = {
@@ -159,10 +162,8 @@ static const char *scratchpadcmd[] = {"st", "-t",     scratchpadname,
 static Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
-    {MODKEY, XK_b, spawn,
-     SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &")},
-    {MODKEY | ControlMask | ShiftMask, XK_b, spawn,
-     SHCMD("feh --bg-max --randomize ~/Downloads/bec/* &")},
+    {MODKEY, XK_b, spawn, SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &")},
+    {MODKEY | ControlMask | ShiftMask, XK_b, spawn, SHCMD("feh --bg-fill --randomize ~/.config/bec/* &")},
     {MODKEY, XK_grave, togglescratch, {.v = scratchpadcmd}},
     {MODKEY | ShiftMask, XK_b, togglebar, {0}},
     {MODKEY | ShiftMask, XK_j, rotatestack, {.i = +1}},
@@ -213,15 +214,15 @@ static Key keys[] = {
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8)
-    /* { MODKEY,                       XK_F2,      spawn,  SHCMD("screenkey -s
-       small --scr 1 -p fixed -g 600x100+2573+1330 --opacity .9 --font-color
-       white") }, */
+    /* { MODKEY,                       XK_F2,      spawn,  SHCMD("screenkey
+       -s small --scr 1 -p fixed -g 600x100+2573+1330 --opacity .9
+       --font-color white") }, */
     /* { MODKEY,                       XK_F3,      spawn,  SHCMD("killall
        screenkey") }, */
     {MODKEY | ShiftMask, XK_q, quit, {0}},
     {MODKEY | ShiftMask, XK_p, spawn, SHCMD("passmenu -c -l 10")},
-    /* { MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("otpmenu
-       -l 10 -y 400 -x 720 -z 500") }, */
+    /* { MODKEY|ShiftMask,             XK_o,      spawn, SHCMD("otpmenu -l
+       10 -y 400 -x 720 -z 500") }, */
     {MODKEY | ShiftMask, XK_o, spawn, SHCMD("otpmenu -c -l 10")},
     {MODKEY | ShiftMask | ControlMask, XK_p, spawn, SHCMD("powermenu")},
     {MODKEY | ShiftMask, XK_x, spawn, SHCMD("killprog")},
@@ -230,18 +231,21 @@ static Key keys[] = {
      SHCMD("screenkey -s small --scr 1 -p fixed -g 200x50+1+21 --opacity .8 "
            "--font-color white")},
     {MODKEY, XK_F3, spawn, SHCMD("killall screenkey")},
-    /* { MODKEY|ShiftMask,             XK_r,      spawn, SHCMD("reboot") }, */
+    /* { MODKEY|ShiftMask,             XK_r,      spawn, SHCMD("reboot") },
+     */
     /* { MODKEY|ShiftMask,             XK_s,      spawn, SHCMD("shutdown -h
        now") }, */
     {MODKEY, XK_y, spawn, SHCMD("ytfzf -D")},
     {MODKEY | ShiftMask, XK_y, spawn, SHCMD("ytfzf -DS")},
-    /* { MODKEY|ShiftMask,			    XK_t,      spawn,		   SHCMD("kitty
-       -e ytop") }, */
+    /* { MODKEY|ShiftMask,			    XK_t,      spawn,
+       SHCMD("kitty -e ytop") }, */
     /* { MODKEY|ShiftMask,             XK_y,      setlayout,      {.v =
        &layouts[3]} }, // spiral */
-    /* { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+    /* { MODKEY,                       XK_0,      view,           {.ui = ~0
+     * } },
      */
-    /* { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+    /* { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0
+     * } },
      */
 };
 
