@@ -163,7 +163,6 @@ static Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_b, spawn, SHCMD("feh --bg-fill --randomize ~/Pictures/wallpapers/* &")},
-    {MODKEY | ControlMask | ShiftMask, XK_b, spawn, SHCMD("feh --bg-fill --randomize ~/.config/bec/* &")},
     {MODKEY, XK_grave, togglescratch, {.v = scratchpadcmd}},
     {MODKEY | ShiftMask, XK_b, togglebar, {0}},
     {MODKEY | ShiftMask, XK_j, rotatestack, {.i = +1}},
@@ -228,8 +227,7 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_x, spawn, SHCMD("killprog")},
     {MODKEY, XK_F1, spawn, SHCMD("msi-rgb-switch")},
     {MODKEY, XK_F2, spawn,
-     SHCMD("screenkey -s small --scr 1 -p fixed -g 200x50+1+21 --opacity .8 "
-           "--font-color white")},
+     SHCMD("screenkey -s small --scr 1 -p fixed -g 300x50+800+950 --opacity .8 --font-color white")},
     {MODKEY, XK_F3, spawn, SHCMD("killall screenkey")},
     /* { MODKEY|ShiftMask,             XK_r,      spawn, SHCMD("reboot") },
      */
